@@ -1,0 +1,48 @@
+// 将设置放入此文件中以覆盖默认设置
+{
+  "editor.tabSize": 2,
+  "[scss]": {
+    "editor.tabSize": 4,
+  },
+  "editor.fontSize": 18,
+  "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?",
+  "editor.wordWrap": "on",
+  "editor.renderIndentGuides": true,
+  "search.exclude": {
+    "**/js_min": true,
+    "**/lib": true,
+    "**/asset": true,
+    "**/.idea": true,
+    "**/build": true,
+    "**/main-built.js": true,
+    "**/www": true,
+    "**/plugins": true
+  },
+  "files.exclude": {
+    "**/platforms": true // set this to true to hide the "out" folder with the compiled JS files
+  },
+  // "css.colorDecorators.enable": false,
+  // "scss.colorDecorators.enable": false,
+  "editor.dragAndDrop": true,
+  "editor.colorDecorators": false,
+  //"javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
+  "html.format.wrapLineLength": 0,
+  "html.format.unformatted": "",
+  "emmet.showExpandedAbbreviation": "never",
+  "beautify.config": {
+    "indent_size": 2,
+    "end_with_newline": false,
+    "indent_handlebars": true,
+    "css": {
+      "indent_size": 4,
+      "newline_between_rules": false,
+      "selector_separator_newline": false,
+      "space_around_combinator": true,
+    },
+  },
+  "editor.formatOnType": true,
+  "typescript.useCodeSnippetsOnMethodSuggest": true,
+  "workbench.colorTheme": "Monokai",
+  "emmet.triggerExpansionOnTab": true,
+  "window.title": "${dirty}${activeEditorLong}${separator}${rootName}${separator}${appName}"
+}

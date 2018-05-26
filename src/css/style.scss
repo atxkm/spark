@@ -1,0 +1,316 @@
+// 自定以颜色值
+$black: #4a4a4a;
+$blue: #119ed8;
+$blue-heavy: #03679a;
+$grey: #767676;
+$grey-light: #d7d7d7;
+$grey-plh: #9f9f9f;
+$grey-line: #999999;
+$grey-line-heavy: #797979;
+$bg-blue: #199ed8;
+// 自定以颜色值
+html {
+    height: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+body, ol, ul, h1, h2, h3, h4, h5, h6, p, th, td, dl, dd, form, fieldset, legend, input, textarea, select, button {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+body {
+    min-height: 100%;
+    font-family: Helvetica, Arial, sans-serif;
+    color: $black;
+}
+em, i {
+    font-style: normal;
+}
+li {
+    list-style: none;
+}
+img {
+    border: 0;
+    vertical-align: bottom;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+a {
+    text-decoration: none;
+    color: $black;
+}
+input {
+    border: none;
+    background: none;
+    outline: none;
+}
+button {
+    border: none;
+    background: none;
+    outline: none;
+}
+//通用样式
+.ov {
+    overflow: hidden;
+}
+.bb {
+    border: 1px solid $blue;
+}
+.br {
+    border-radius: 10px;
+}
+.t-c {
+    text-align: center;
+}
+.f12 {
+    font-size: 12px;
+}
+.f14 {
+    font-size: 14px;
+}
+.f16 {
+    font-size: 16px;
+}
+.f18 {
+    font-size: 18px;
+}
+.f20 {
+    font-size: 20px;
+}
+.m-a {
+    margin: 0 auto;
+}
+.btn {
+    display: block;
+    width: 300px;
+    margin: 0 auto;
+    border: none;
+    border-radius: 5px;
+    line-height: 40px;
+    font-size: 14px;
+    text-align: center;
+}
+.w-btn {
+    @extend .btn;
+    background-color: #ffffff;
+    color: $blue;
+}
+.b-btn {
+    @extend .btn;
+    background-color: $blue;
+    color: #ffffff;
+}
+.a-btn {
+    font-size: 14px;
+    color: $blue;
+}
+.bg-c {
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.b-r5 {
+    border-radius: 5px;
+}
+label.checkbox {
+    input, span {
+        vertical-align: middle;
+    }
+}
+//顶部统一样式
+.banner-top {
+    background-color: $bg-blue;
+    .back {
+        float: left;
+        width: 25px;
+        height: 25px;
+        margin-left: 10px;
+        margin-top: 7px;
+        @extend .bg-c;
+        background-image: url('../img/back.png');
+    }
+    .title {
+        margin: 0 45px;
+        line-height: 40px;
+        text-align: center;
+        font-size: 14px;
+        color: #ffffff;
+    }
+}
+//底部统一样式
+.banner-bottom {
+    display: flex;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    padding: 0 18px;
+    background-color: #f2f2f2;
+    & > div {
+        width: 40px;
+        height: 40px;
+        @extend .bg-c;
+    }
+    .home {
+        background-image: url('../img/home-outline.png');
+        &.active {
+            background-image: url('../img/home.png');
+        }
+    }
+    .search {
+        background-image: url('../img/search-outline.png');
+        &.active {
+            background-image: url('../img/search.png');
+        }
+    }
+    .order {
+        background-image: url('../img/order-outline.png');
+        &.active {
+            background-image: url('../img/order.png');
+        }
+    }
+    .mine {
+        background-image: url('../img/mine-outline.png');
+        &.active {
+            background-image: url('../img/mine.png');
+        }
+    }
+}
+@media screen and (max-height: 512px) {
+    .banner-bottom {
+        display: none;
+    }
+}
+// 登录样式
+.login-body {
+    background: url('../img/login-bg.jpg') no-repeat center top / cover;
+    .logo {
+        display: block;
+        padding-top: 100px;
+    }
+    .login-box {
+        width: 300px;
+        & > div {
+            display: flex;
+            justify-content: flex-end;
+            height: 48px;
+            background-color: #ffffff;
+            background-repeat: no-repeat;
+            background-position: 15px center;
+        }
+        input {
+            flex: 0 0 230px;
+            display: block;
+            height: 100%;
+            margin-left: 55px;
+            padding-left: 10px;
+            background-color: #eff2f6;
+        }
+        .username {
+            border-bottom: 1px solid $grey-line-heavy;
+            background-image: url('../img/user.png');
+        }
+        .password {
+            background-image: url('../img/password.png');
+        }
+    }
+    .submit {
+        margin-top: 25px;
+    }
+    .btns {
+        display: flex;
+        justify-content: space-between;
+        width: 300px;
+        margin: 0 auto;
+        margin-top: 14px;
+    }
+    .bottom-info {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        color: #ffffff;
+        margin-bottom: 15px;
+    }
+    @media screen and (max-height: 512px) {
+        .bottom-info {
+            display: none;
+        }
+    }
+}
+// 注册样式
+.regist-body {
+    .wrap {
+        padding: 50px 40px 0;
+        .line-input {
+            display: flex;
+            height: 30px;
+            margin-bottom: 10px;
+            font-size: 14px;
+            input {
+                flex: 1;
+                border-bottom: 1px solid $grey-line-heavy;
+                &::-webkit-input-placeholder {
+                    color: $grey-plh;
+                }
+            }
+            .label {
+                flex: 0 0 35px;
+                line-height: 30px;
+            }
+            .code {
+                width: 80px;
+                margin-left: 10px;
+                @extend .b-r5;
+                border: 1px solid $grey-line;
+                line-height: 30px;
+                text-align: center;
+                color: $grey-plh;
+            }
+        }
+        .submit {
+            margin-top: 20px;
+        }
+        .agree {
+            margin-top: 10px;
+            font-size: 14px;
+            span {
+                color: $grey;
+            }
+        }
+    }
+}
+// 首页样式
+.home-body {
+    .swiper-container {
+        width: 100%;
+        height: 170px;
+        .swiper-pagination-bullet-active {
+            background: #ffffff;
+        }
+    }
+    .info {
+        display: flex;
+        align-items: center;
+        height: 35px;
+        background-color: $bg-blue;
+        font-size: 14px;
+        color: #ffffff;
+        .name {
+            flex: 0 0 50px;
+            height: 20px;
+            border-right: 1px solid #ffffff;
+            text-align: center;
+        }
+        .text {
+            padding-left: 10px;
+            a {
+                color: #ffffff;
+            }
+        }
+    }
+}
