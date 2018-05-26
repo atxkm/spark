@@ -5,7 +5,7 @@ $blue-heavy: #03679a;
 $grey: #767676;
 $grey-light: #d7d7d7;
 $grey-plh: #9f9f9f;
-$grey-line: #999999;
+$grey-line: #e4e4e4;
 $grey-line-heavy: #797979;
 $bg-blue: #199ed8;
 // 自定以颜色值
@@ -104,6 +104,17 @@ select {
     @extend .btn;
     background-color: $blue;
     color: #ffffff;
+}
+.b-btn-m {
+    @extend .b-btn;
+    width: 150px;
+}
+.b-btn-b {
+    @extend .b-btn;
+    height: 55px;
+    margin-top: 20px;
+    font-size: 20px;
+    line-height: 55px;
 }
 .a-btn {
     font-size: 14px;
@@ -459,78 +470,141 @@ label.checkbox {
 }
 .order-create-body {
     .wrap {
-        .row {
+        padding-bottom: 10px;
+    }
+    .row {
+        display: flex;
+        padding: 8px 15px;
+        border-bottom: 1px solid $grey-line;
+        .item {
             display: flex;
-            padding: 8px 15px;
-            border-bottom: 1px solid $grey-line;
-            .item {
-                display: flex;
-                flex: 1;
-                &.date {
-                    .name {
-                        margin-right: 0;
-                    }
-                    input {
-                        width: auto;
-                        text-indent: 0;
-                    }
-                }
+            flex: 1;
+            &.date {
                 .name {
-                    flex: 0 0 60px;
-                    margin-right: 15px;
-                    line-height: 25px;
-                    color: $blue;
-                    font-size: 14px;
+                    margin-right: 0;
                 }
                 input {
-                    flex: 1;
-                    height: 25px;
-                    background-color: #f2f2f2;
-                    text-indent: 1em;
-                }
-                select.spec {
-                    padding-right: 20px;
-                    border: none;
-                    background: transparent url('../img/arrow-down.png') no-repeat right center / 16px;
-                    font-size: 14px;
-                    -webkit-appearance: none;
+                    width: auto;
+                    text-indent: 0;
                 }
             }
-            &.checkbox-row {
+            .name {
+                flex: 0 0 60px;
+                margin-right: 15px;
+                line-height: 25px;
+                color: $blue;
                 font-size: 14px;
-                justify-content: space-between;
-                span {
+            }
+            input {
+                flex: 1;
+                height: 25px;
+                background-color: #f2f2f2;
+                text-indent: 1em;
+            }
+            &:nth-child(2) {
+                input {
+                    width: 0;
+                }
+            }
+            select.spec {
+                padding-right: 20px;
+                border: none;
+                background: transparent url('../img/arrow-down.png') no-repeat right center / 16px;
+                font-size: 14px;
+                -webkit-appearance: none;
+            }
+        }
+        &.checkbox-row {
+            font-size: 14px;
+            justify-content: space-between;
+            span {
+                color: $blue;
+            }
+        }
+        &.photo {
+            label {
+                width: 80px;
+                height: 65px;
+                @extend .bg-c;
+                background-color: #f2f2f2;
+                background-image: url('../img/photo.png');
+                background-size: 80%;
+                input {
+                    visibility: hidden;
+                }
+            }
+            span {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                height: 65px;
+                padding-left: 15px;
+                font-size: 14px;
+                color: $grey;
+            }
+            .preview-img {
+                display: none;
+                position: relative;
+                flex: 1;
+                background-color: #f2f2f2;
+                img {
+                    width: 100%;
+                }
+                &::after {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    width: 70px;
+                    height: 70px;
+                    transform: translate(-50%, -50%);
+                    @extend .bg-c;
+                    background-image: url('../img/photo.png');
+                    background-size: 100%;
+                    content: '';
+                }
+            }
+        }
+        .desc {
+            display: flex;
+            align-items: center;
+            font-size: 12px;
+            color: $grey;
+        }
+    }
+    .box {
+        padding-top: 10px;
+        border-bottom: 1px solid $grey-line;
+        .row {
+            padding-top: 0;
+            border: none;
+            &:nth-child(1) {
+                .name {
                     color: $blue;
                 }
             }
-        }
-        .box {
-            padding-top: 10px;
-            border-bottom: 1px solid $grey-line;
-            .row {
-                padding-top: 0;
-                border: none;
-                &:nth-child(1) {
-                    .name {
-                        color: $blue;
-                    }
-                }
-                .name {
-                    color: $black;
-                }
-                select {
-                    margin-right: 10px;
-                    &:last-child {
-                        margin-right: 0;
-                    }
-                }
-                textarea {
-                    display: block;
-                    width: 100%;
-                    height: 90px;
-                    resize: none;
+            .name {
+                color: $black;
+            }
+            select {
+                margin-right: 10px;
+                &:last-child {
+                    margin-right: 0;
                 }
             }
+            textarea {
+                display: block;
+                width: 100%;
+                height: 90px;
+                resize: none;
+            }
         }
+    }
+    .form-drawing {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #ffffff;
     }
 }

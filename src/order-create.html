@@ -129,7 +129,80 @@
       </div>
       <div class="row">
         <div class="item">
-          <textarea placeholder="请输入项目描述"></textarea>
+          <textarea placeholder="请输入需求描述，最多可输入300个字符。"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="row">
+        <div class="item">
+          <div class="name">添加附件</div>
+          <span class="desc">当前附件0件</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="add-btn b-btn-m" id="addBtn">添加附件</div>
+      </div>
+    </div>
+
+    <div class="b-btn-b">提交询价单，等待审核</div>
+
+  </div>
+
+  <div class="form-drawing" style="display: none;" id="formDrawing">
+
+    <div class="row">
+      <div class="item">
+        <div class="name">图纸名称</div>
+        <input type="text">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="item">
+        <div class="name">图纸号</div>
+        <input type="text">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="item">
+        <div class="name">材质</div>
+        <select class="spec">
+          <option value="其他">其他</option>
+        </select>
+      </div>
+      <div class="item">
+        <div class="name">数量</div>
+        <input type="text">
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="row">
+        <div class="name">添加图纸</div>
+      </div>
+      <div class="row photo">
+        <label>
+          <input type="file" accept="image/*" onchange="preview(this)" id="fileInp">
+        </label>
+        <span>上传一张图纸照片<br>请横屏拍摄</span>
+        <div class="preview-img">
+          <img id="previewImg">
+        </div>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="row">
+        <div class="item">
+          <div class="name">需求描述</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="item">
+          <textarea placeholder="请输入需求描述，最多可输入300个字符。"></textarea>
         </div>
       </div>
     </div>
@@ -137,6 +210,50 @@
   </div>
 
   <script src="js/script.js"></script>
+  <script>
+    function preview(_this) {
+      var file = _this.files[0];
+      if (!file) {
+        resizePreview(_this);
+        return;
+      }
+      var row = _this.parentNode.parentNode;
+      var label = row.querySelector('label');
+      var span = row.querySelector('span');
+      var img = row.querySelector('img');
+      var reads = new FileReader();
+      reads.readAsDataURL(file);
+      reads.onload = function(e) {
+        label.style.display = 'none';
+        span.style.display = 'none';
+        img.src = this.result;
+        img.parentNode.style.display = 'block';
+      };
+    }
+
+    function resizePreview(_this) {
+      var row = _this.parentNode.parentNode;
+      var label = row.querySelector('label');
+      var span = row.querySelector('span');
+      var div = row.querySelector('div');
+      label.style.display = 'block';
+      span.style.display = 'block';
+      div.style.display = 'none';
+    }
+
+    var addBtn = document.getElementById('addBtn');
+    var formDrawing = document.getElementById('formDrawing');
+    var fileInp = document.getElementById('fileInp');
+    var previewImg = document.getElementById('previewImg');
+
+    addBtn.onclick = function() {
+      formDrawing.style.display = 'block';
+    };
+
+    previewImg.onclick = function() {
+      fileInp.click();
+    };
+  </script>
 </body>
 
 </html>
