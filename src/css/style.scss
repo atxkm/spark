@@ -51,6 +51,9 @@ button {
     background: none;
     outline: none;
 }
+select {
+    outline: none;
+}
 //通用样式
 .ov {
     overflow: hidden;
@@ -185,6 +188,23 @@ label.checkbox {
         display: none;
     }
 }
+.grey-divide {
+    height: 10px;
+    background-color: #f2f2f2;
+}
+//顶部选择
+.select-top {
+    display: block;
+    width: 100%;
+    height: 35px;
+    flex: 1 1 20px;
+    padding-left: 35px;
+    border: none;
+    color: $blue;
+    background: transparent url('../img/arrow-down.png') no-repeat right 20px center / 16px;
+    font-size: 14px;
+    -webkit-appearance: none;
+}
 // 登录样式
 .login-body {
     background: url('../img/login-bg.jpg') no-repeat center top / cover;
@@ -207,6 +227,7 @@ label.checkbox {
             display: block;
             height: 100%;
             margin-left: 55px;
+            flex: 1 1 20px;
             padding-left: 10px;
             background-color: #eff2f6;
         }
@@ -289,6 +310,11 @@ label.checkbox {
     .swiper-container {
         width: 100%;
         height: 170px;
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
         .swiper-pagination-bullet-active {
             background: #ffffff;
         }
@@ -307,9 +333,203 @@ label.checkbox {
             text-align: center;
         }
         .text {
+            flex: 1 1 20px;
             padding-left: 10px;
             a {
                 color: #ffffff;
+            }
+        }
+    }
+    .btns {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-top: 10px;
+        padding: 40px 30px 0;
+        .item {
+            margin-bottom: 30px;
+            .circle-btn {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                @extend .bg-c;
+                background-color: $bg-blue;
+            }
+            .create {
+                background-image: url('../img/home-create.png');
+            }
+            .order {
+                background-image: url('../img/home-order.png');
+            }
+            .vender {
+                background-image: url('../img/home-vender.png');
+            }
+            .tech {
+                background-image: url('../img/home-tech.png');
+            }
+            .news {
+                background-image: url('../img/home-news.png');
+            }
+            .help {
+                background-image: url('../img/home-help.png');
+            }
+            .text {
+                margin-top: 14px;
+                text-align: center;
+                font-size: 14px;
+            }
+        }
+    }
+}
+.vender-body {
+    .wrap {
+        .item {
+            padding: 10px;
+            border-bottom: 1px solid $grey-line;
+            img {
+                display: block;
+                width: 100%;
+                margin-bottom: 15px;
+            }
+            .info {
+                display: flex;
+                margin-bottom: 12px;
+                line-height: 16px;
+                font-size: 14px;
+                .name {
+                    flex: 0 0 75px;
+                    color: $blue;
+                }
+            }
+        }
+    }
+}
+.order-body {
+    .wrap {
+        .item {
+            display: flex;
+            position: relative;
+            padding: 10px;
+            border-bottom: 1px solid $grey-line;
+            font-size: 12px;
+            img {
+                flex: 0 0 150px;
+                width: 150px;
+                height: 100px;
+            }
+            .info {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                flex: 1 0 auto;
+                flex: 1 1 20px;
+                padding-left: 20px;
+                & > div {
+                    display: flex;
+                    align-items: center;
+                    padding-bottom: 5px;
+                    span:nth-child(1) {
+                        flex: 0 0 85px;
+                    }
+                }
+                .name {
+                    font-size: 14px;
+                    font-weight: bold;
+                }
+                .area {
+                    span:nth-child(2) {
+                        font-weight: bold;
+                    }
+                }
+            }
+            .hot {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                img {
+                    width: 20px;
+                    height: 20px;
+                }
+                img, span {
+                    vertical-align: middle;
+                }
+            }
+        }
+    }
+}
+.order-create-body {
+    .wrap {
+        .row {
+            display: flex;
+            padding: 8px 15px;
+            border-bottom: 1px solid $grey-line;
+            .item {
+                display: flex;
+                flex: 1;
+                &.date {
+                    .name {
+                        margin-right: 0;
+                    }
+                    input {
+                        width: auto;
+                        text-indent: 0;
+                    }
+                }
+                .name {
+                    flex: 0 0 60px;
+                    margin-right: 15px;
+                    line-height: 25px;
+                    color: $blue;
+                    font-size: 14px;
+                }
+                input {
+                    flex: 1;
+                    height: 25px;
+                    background-color: #f2f2f2;
+                    text-indent: 1em;
+                }
+                select.spec {
+                    padding-right: 20px;
+                    border: none;
+                    background: transparent url('../img/arrow-down.png') no-repeat right center / 16px;
+                    font-size: 14px;
+                    -webkit-appearance: none;
+                }
+            }
+            &.checkbox-row {
+                font-size: 14px;
+                justify-content: space-between;
+                span {
+                    color: $blue;
+                }
+            }
+        }
+        .box {
+            padding-top: 10px;
+            border-bottom: 1px solid $grey-line;
+            .row {
+                padding-top: 0;
+                border: none;
+                &:nth-child(1) {
+                    .name {
+                        color: $blue;
+                    }
+                }
+                .name {
+                    color: $black;
+                }
+                select {
+                    margin-right: 10px;
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                }
+                textarea {
+                    display: block;
+                    width: 100%;
+                    height: 90px;
+                    resize: none;
+                }
             }
         }
     }

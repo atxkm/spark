@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=375, user-scalable=no, viewport-fit=cover">
+  <title>火花2025</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="order-create-body">
+
+  <div class="banner-top">
+    <button class="back" onclick="historyBack()"></button>
+    <div class="title">创建订单</div>
+  </div>
+
+  <div class="wrap">
+
+    <div class="row">
+      <div class="item">
+        <div class="name">标题</div>
+        <input type="text">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="item">
+        <div class="name">选择类别</div>
+        <select class="spec">
+          <option value="机械加工">机械加工</option>
+        </select>
+      </div>
+      <div class="item">
+        <div class="name">接单类型</div>
+        <select class="spec">
+          <option value="包工包料">包工包料</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="item">
+        <div class="name">选择材质</div>
+        <select class="spec">
+          <option value="其他">其他</option>
+        </select>
+      </div>
+      <div class="item">
+        <div class="name">预算</div>
+        <select class="spec">
+          <option value="包工包料">1000以内</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="item">
+        <div class="name">询价方式</div>
+        <select class="spec">
+          <option value="泛向发单">泛向发单</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="item date">
+        <div class="name">截止日期</div>
+        <input type="date">
+      </div>
+      <div class="item date">
+        <div class="name">交货日期</div>
+        <input type="date">
+      </div>
+    </div>
+
+    <div class="row checkbox-row">
+      <label class="checkbox">
+        <input type="checkbox">
+        <span>违约金</span>
+      </label>
+      <label class="checkbox">
+        <input type="checkbox">
+        <span>质保金</span>
+      </label>
+      <label class="checkbox">
+        <input type="checkbox">
+        <span>运费</span>
+      </label>
+      <label class="checkbox">
+        <input type="checkbox">
+        <span>含税</span>
+      </label>
+    </div>
+
+    <div class="box">
+      <div class="row">
+        <div class="item">
+          <div class="name">交货地址</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="item">
+          <div class="name">所在地区</div>
+          <select>
+            <option value="请选择省">请选择省</option>
+          </select>
+          <select>
+            <option value="请选择市">请选择市</option>
+          </select>
+          <select>
+            <option value="请选择县">请选择县</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="item">
+          <div class="name">详细地址</div>
+          <input type="text">
+        </div>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="row">
+        <div class="item">
+          <div class="name">项目描述</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="item">
+          <textarea placeholder="请输入项目描述"></textarea>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+
+</html>
