@@ -105,6 +105,13 @@ select {
     background-color: $blue;
     color: #ffffff;
 }
+.b-btn-s {
+    @extend .b-btn;
+    width: 90px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 12px;
+}
 .b-btn-m {
     @extend .b-btn;
     width: 150px;
@@ -598,11 +605,48 @@ label.checkbox {
                 resize: none;
             }
         }
+        &.drawing {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 0;
+            .info {
+                display: flex;
+                padding: 10px;
+                .pic {
+                    img {
+                        width: 100px;
+                        height: 70px;
+                    }
+                }
+                .content {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-around;
+                    padding-left: 15px;
+                    font-size: 12px;
+                    span {
+                        margin-right: 5px;
+                        font-size: 14px;
+                        color: $blue;
+                    }
+                }
+            }
+            .view {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 50px;
+                background-color: $bg-blue;
+                font-size: 14px;
+                color: #ffffff;
+            }
+        }
     }
     .form-drawing {
         position: fixed;
         top: 0;
         bottom: 0;
+        overflow-y: auto;
         width: 100%;
         height: 100%;
         background-color: #ffffff;
