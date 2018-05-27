@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=375, user-scalable=no, viewport-fit=cover">
+  <title>火花2025</title>
+  <link rel="stylesheet" href="css/swiper.min.css">
+  <link rel="stylesheet" href="css/swipebox.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="order-detail-body">
+
+  <div class="banner-top">
+    <button class="back" onclick="historyBack()"></button>
+    <div class="title">钣金件两项</div>
+  </div>
+
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><a class="swipebox" href="img/part.png"><img src="img/part.png"></a></div>
+      <div class="swiper-slide"><a class="swipebox" href="img/part2.jpg"><img src="img/part2.jpg"></a></div>
+      <div class="swiper-slide"><a class="swipebox" href="img/part.png"><img src="img/part.png"></a></div>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+
+  <section class="detail">
+
+    <div class="idea">
+      <div>此订单<span>DD898080980980</span>已通过平台审核</div>
+      <div>请放心<span>参与报价</span></div>
+      <div>当前参与报价人数为<em>5</em>人</div>
+      <div class="auth"><span>平台认证</span><a href="javascript:;">立即报价</a></div>
+    </div>
+    <div class="title">钣金件两项</div>
+    <div class="row">
+      <div class="item"><span>发布时间</span>2018-05-22</div>
+      <div class="item"><span>业务类型</span>机械加工</div>
+    </div>
+    <div class="row">
+      <div class="item"><span>报价截止</span>2018-05-22</div>
+      <div class="item"><span>期望交货</span>2018-05-22</div>
+    </div>
+    <div class="row">
+      <div class="item"><span>接单类型</span>来料加工</div>
+      <div class="item"><span>材质</span>铝合金</div>
+    </div>
+    <div class="row">
+      <div class="item"><span class="long">报价是否含运费</span>是</div>
+      <div class="item"><span>预计总计</span>500-1000</div>
+    </div>
+    <div class="row">
+      <div class="item"><span class="long">报价是否含税</span>是</div>
+      <div class="item"><span class="long-l">报价是否含违约金</span>是</div>
+    </div>
+    <div class="row">
+      <div class="item"><span>业务地址</span>北京市房山区阎村中里23号</div>
+    </div>
+    <div class="row">
+      <div class="item"><span>图纸</span></div>
+    </div>
+    <a class="pic swipebox" href="img/part.png"><img src="img/part2.jpg"></a>
+
+    <div class="title2">询价产品</div>
+
+    <div class="drawing">
+      <div class="info">
+        <a class="pic swipebox" href="img/part.png"><img src="img/part.png"></a>
+        <div class="content">
+          <div class="name"><span>钣金件两项</span></div>
+          <div class="no"><span>图号</span>ASA260M-05-01-1</div>
+          <div class="number"><span>数量</span>10件</div>
+        </div>
+      </div>
+      <div class="view">查看</div>
+    </div>
+
+    <div class="drawing-detail" style="display: none;">
+      <div class="row">
+        <div class="item"><span>工件名称</span>钣金件两项</div>
+      </div>
+      <div class="row">
+        <div class="item"><span>图号</span>ASA260M-05-01-1</div>
+        <div class="item short"><span>数量</span>3</div>
+      </div>
+      <div class="row">
+        <div class="item"><span>图纸名称</span>排气管法兰1</div>
+      </div>
+      <div class="row">
+        <div class="item"><span>需求描述</span></div>
+      </div>
+      <ul>
+        <li>1、线性和角度尺寸未注公差按GB/1084-m</li>
+        <li>2、未注行位公差按GB/1084-k</li>
+        <li>3、钣金冲压按QJ261-1994</li>
+        <li>4、焊接成型，焊接处密封，焊缝均匀修平</li>
+        <li>5、去毛刺，锐边倒钝</li>
+      </ul>
+      <div class="row">
+        <div class="item"><span>图纸</span></div>
+      </div>
+      <a class="pic swipebox" href="img/part2.jpg"><img src="img/part2.jpg"></a>
+      <div class="row"><button class="packup b-btn-m">收起</button></div>
+    </div>
+
+  </section>
+
+  <div class="bottom">如有任何疑问请咨询客服 170-2025-2025</div>
+
+  <div class="fly-bototm">
+    <div>170-2025-2025</div>
+    <div>立即报价</div>
+  </div>
+
+  <script src="js/fastclick.js"></script>
+  <script src="js/swiper.min.js"></script>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery.swipebox.min.js"></script>
+  <script src="js/script.js"></script>
+  <script>
+    FastClick.attach(document.body);
+
+    var mySwiper = new Swiper('.swiper-container', {
+      pagination: {
+        el: '.swiper-pagination',
+      },
+      loop: true,
+      autoplay: true
+    });
+
+    $('.drawing .view').click(function() {
+      var parent = $(this).parent();
+      parent.slideUp().next().slideDown();
+    });
+
+    $('.packup').click(function() {
+      var parent = $(this).parent().parent();
+      parent.slideUp().prev().slideDown();
+    });
+
+    $('.swipebox').swipebox();
+  </script>
+</body>
+
+</html>

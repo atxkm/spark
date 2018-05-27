@@ -19,8 +19,7 @@
 
     <div class="row">
       <div class="item">
-        <div class="name">标题</div>
-        <input type="text">
+        <div class="name">标题</div><input type="text">
       </div>
     </div>
 
@@ -65,32 +64,18 @@
 
     <div class="row">
       <div class="item date">
-        <div class="name">截止日期</div>
-        <input type="date">
+        <div class="name">截止日期</div><input type="date">
       </div>
       <div class="item date">
-        <div class="name">交货日期</div>
-        <input type="date">
+        <div class="name">交货日期</div><input type="date">
       </div>
     </div>
 
     <div class="row checkbox-row">
-      <label class="checkbox">
-        <input type="checkbox">
-        <span>违约金</span>
-      </label>
-      <label class="checkbox">
-        <input type="checkbox">
-        <span>质保金</span>
-      </label>
-      <label class="checkbox">
-        <input type="checkbox">
-        <span>运费</span>
-      </label>
-      <label class="checkbox">
-        <input type="checkbox">
-        <span>含税</span>
-      </label>
+      <label class="checkbox"><input type="checkbox"><span>违约金</span></label>
+      <label class="checkbox"><input type="checkbox"><span>质保金</span></label>
+      <label class="checkbox"><input type="checkbox"><span>运费</span></label>
+      <label class="checkbox"><input type="checkbox"><span>含税</span></label>
     </div>
 
     <div class="box">
@@ -115,8 +100,7 @@
       </div>
       <div class="row">
         <div class="item">
-          <div class="name">详细地址</div>
-          <input type="text">
+          <div class="name">详细地址</div><input type="text">
         </div>
       </div>
     </div>
@@ -136,123 +120,107 @@
 
     <div class="box">
       <div class="row">
-        <div class="name">添加图纸</div>
+        <div class="item">
+          <div class="name">添加图纸</div>
+        </div>
       </div>
       <div class="row photo">
-        <label>
-          <input type="file" accept="image/*" onchange="preview(this)">
-        </label>
+        <label><input type="file" accept="image/*" onchange="preview(this)"></label>
         <span>上传一张图纸照片<br>请横屏拍摄</span>
-        <div class="preview-img">
-          <img id="previewImg2">
-        </div>
+        <div class="preview-img"><img></div>
       </div>
     </div>
 
     <div class="box">
       <div class="row">
         <div class="item">
-          <div class="name">添加附件</div>
-          <span class="desc">当前附件1件</span>
+          <div class="name">添加附件</div><span class="desc" id="fileNum">当前附件1件</span>
         </div>
       </div>
     </div>
 
+    <div class="row">
+      <button class="add-btn b-btn-m" id="addBtn">添加附件</button>
+    </div>
+
+    <button class="b-btn-b">提交询价单，等待审核</button>
+
+  </div>
+
+  <script id="drawingBox" type="text/html">
     <div class="box drawing">
       <div class="info">
-        <div class="pic">
-          <img src="img/part.png">
-        </div>
+        <div class="pic"><img src="img/part.png"></div>
         <div class="content">
           <div class="name"><span>钣金件两项</span></div>
           <div class="no"><span>图号</span>ASA260M-05-01-1</div>
           <div class="number"><span>数量</span>10件</div>
         </div>
       </div>
-      <div class="view">查看</div>
+      <button class="view">查看</button>
     </div>
+  </script>
 
-    <div class="box">
+  <script id="drawingForm" type="text/html">
+    <div class="drawing-form">
       <div class="row">
-        <div class="add-btn b-btn-m" id="addBtn">添加附件</div>
+        <div class="item">
+          <div class="name">图纸名称</div><input type="text">
+        </div>
       </div>
-    </div>
-
-
-    <div class="b-btn-b">提交询价单，等待审核</div>
-
-  </div>
-
-  <div class="form-drawing" style="display: none;" id="formDrawing">
-
-    <div class="row">
-      <div class="item">
-        <div class="name">图纸名称</div>
-        <input type="text" id="drawingName">
+      <div class="row">
+        <div class="item">
+          <div class="name">图纸号</div><input type="text">
+        </div>
       </div>
-    </div>
-
-    <div class="row">
-      <div class="item">
-        <div class="name">图纸号</div>
-        <input type="text" id="drawingNo">
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="item">
-        <div class="name">材质</div>
-        <select class="spec" id="drawingTexture">
+      <div class="row">
+        <div class="item">
+          <div class="name">材质</div>
+          <select class="spec">
           <option value="其他">其他</option>
         </select>
-      </div>
-      <div class="item">
-        <div class="name">数量</div>
-        <input type="text" id="drawingNum">
-      </div>
-    </div>
-
-    <div class="box">
-      <div class="row">
-        <div class="name">添加图纸</div>
-      </div>
-      <div class="row photo">
-        <label>
-          <input type="file" accept="image/*" onchange="preview(this)" id="fileInp">
-        </label>
-        <span>上传一张图纸照片<br>请横屏拍摄</span>
-        <div class="preview-img">
-          <img id="previewImg">
+        </div>
+        <div class="item">
+          <div class="name">数量</div><input type="text">
         </div>
       </div>
-    </div>
-
-    <div class="box">
+      <div class="box">
+        <div class="row">
+          <div class="name">添加图纸</div>
+        </div>
+        <div class="row photo">
+          <label><input type="file" accept="image/*" onchange="preview(this)"></label>
+          <span>上传一张图纸照片<br>请横屏拍摄</span>
+          <div class="preview-img"><img id="previewImg"></div>
+        </div>
+      </div>
+      <div class="box">
+        <div class="row">
+          <div class="item">
+            <div class="name">需求描述</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="item">
+            <textarea placeholder="请输入需求描述，最多可输入300个字符。"></textarea>
+          </div>
+        </div>
+      </div>
       <div class="row">
         <div class="item">
-          <div class="name">需求描述</div>
+          <button class="b-btn-s" class="modify-btn">修改</button>
+          <button class="b-btn-s" class="del-btn">删除</button>
         </div>
       </div>
       <div class="row">
-        <div class="item">
-          <textarea placeholder="请输入需求描述，最多可输入300个字符。" id="drawingDesc"></textarea>
-        </div>
+        <button class="fold b-btn-m">收起</button>
       </div>
     </div>
 
-    <div class="row" id="addBtns">
-      <div class="add-btn b-btn-m" id="submitAdd">添加附件</div>
-    </div>
+  </script>
 
-    <div class="row" id="modifyBtns">
-      <div class="item">
-        <div class="b-btn-s" id="modifyBtn">修改</div>
-        <div class="b-btn-s" id="delBtn">删除</div>
-      </div>
-    </div>
-
-  </div>
-
+  <script src="js/jquery.min.js"></script>
+  <script src="js/template.js"></script>
   <script src="js/script.js"></script>
   <script>
     function preview(_this) {
@@ -261,17 +229,17 @@
         resizePreview(_this);
         return;
       }
-      var row = _this.parentNode.parentNode;
-      var label = row.querySelector('label');
-      var span = row.querySelector('span');
-      var img = row.querySelector('img');
+      var row = $(this).parent().parent();
+      var label = row.find('label');
+      var span = row.find('span');
+      var img = row.find('img');
       var reads = new FileReader();
       reads.readAsDataURL(file);
       reads.onload = function(e) {
-        label.style.display = 'none';
-        span.style.display = 'none';
-        img.src = this.result;
-        img.parentNode.style.display = 'block';
+        label.css('display', 'none');
+        span.css('display', 'none');
+        img.attr('src', this.result);
+        img.parent.css('display', 'block');
       };
     }
 
@@ -285,51 +253,26 @@
       div.style.display = 'none';
     }
 
-    var addBtn = document.getElementById('addBtn');
-    var formDrawing = document.getElementById('formDrawing');
-    var fileInp = document.getElementById('fileInp');
-    var previewImg = document.getElementById('previewImg');
-    var addBtns = document.getElementById('addBtns');
-    var submitAdd = document.getElementById('submitAdd');
-    var modifyBtns = document.getElementById('modifyBtns');
-    var formType = 'add';
     var filesData = [];
 
-    addBtn.onclick = function() {
-      // if (formType == 'add') {
-      //   addBtns.style.display = 'block';
-      //   modifyBtns.style.display = 'none';
-      // } else if (formType == 'modify') {
-      //   modifyBtns.style.display = 'block';
-      //   addBtns.style.display = 'none';
-      // }
-      formDrawing.style.display = 'block';
-    };
+    $('#addBtn').click(function() {
+      var drawingForm = document.getElementById('drawingForm').innerHTML;
+      var temp = template(drawingForm, {});
 
-    previewImg.onclick = function() {
-      fileInp.click();
-    };
+      $(this).parent().before(temp);
+    });
 
-    submitAdd.onclick = function() {
-      // var drawingName = document.getElementById('drawingName');
-      // var drawingNo = document.getElementById('drawingNo');
-      // var drawingTexture = document.getElementById('drawingTexture');
-      // var drawingNum = document.getElementById('drawingNum');
-      // var drawingDesc = document.getElementById('drawingDesc');
+    $('body').on('click', '.photo img', function() {
+      $(this).parent().parent().find('input')[0].click();
+    });
 
-      // var tempData = {
-      //   drawingName: drawingName.value,
-      //   drawingNo: drawingNo.value,
-      //   drawingTexture: drawingTexture.value,
-      //   drawingNum: drawingNum.value,
-      //   drawingDesc: drawingDesc.value,
-      //   imgUrl: fileInp.value
-      // };
+    $('body').on('click', '.fold', function() {
+      $(this).parent().parent().hide();
+    });
 
-      // filesData.push(tempData);
-      formDrawing.style.display = 'none';
-
-    };
+    $('body').on('click', '.fold', function() {
+      $(this).parent().parent().hide();
+    });
   </script>
 </body>
 
