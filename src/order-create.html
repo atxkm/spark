@@ -140,7 +140,7 @@
     </div>
 
     <div class="row">
-      <button class="add-btn b-btn-m" id="addBtn">添加附件</button>
+      <button class="b-btn-m" id="addBtn">添加附件</button>
     </div>
 
     <button class="b-btn-b">提交询价单，等待审核</button>
@@ -162,26 +162,26 @@
   </script>
 
   <script id="drawingForm" type="text/html">
-    <div class="drawing-form">
+    <form class="drawing-form" onsubmit="return false;">
       <div class="row">
         <div class="item">
-          <div class="name">图纸名称</div><input type="text">
+          <div class="name">图纸名称</div><input type="text" name="name">
         </div>
       </div>
       <div class="row">
         <div class="item">
-          <div class="name">图纸号</div><input type="text">
+          <div class="name">图纸号</div><input type="text" name="no">
         </div>
       </div>
       <div class="row">
         <div class="item">
           <div class="name">材质</div>
-          <select class="spec">
-          <option value="其他">其他</option>
-        </select>
+          <select class="spec" name="cz">
+            <option value="其他">其他</option>
+          </select>
         </div>
         <div class="item">
-          <div class="name">数量</div><input type="text">
+          <div class="name">数量</div><input type="text" name="num">
         </div>
       </div>
       <div class="box">
@@ -189,7 +189,7 @@
           <div class="name">添加图纸</div>
         </div>
         <div class="row photo">
-          <label><input type="file" accept="image/*" onchange="preview(this)"></label>
+          <label><input type="file" accept="image/*" onchange="preview(this)" name="img"></label>
           <span>上传一张图纸照片<br>请横屏拍摄</span>
           <div class="preview-img"><img id="previewImg"></div>
         </div>
@@ -202,20 +202,22 @@
         </div>
         <div class="row">
           <div class="item">
-            <textarea placeholder="请输入需求描述，最多可输入300个字符。"></textarea>
+            <textarea placeholder="请输入需求描述，最多可输入300个字符。" name="desc"></textarea>
           </div>
         </div>
       </div>
       <div class="row">
-        <div class="item">
-          <button class="b-btn-s" class="modify-btn">修改</button>
-          <button class="b-btn-s" class="del-btn">删除</button>
-        </div>
+        <% if (type == 'add') { %>
+          <button class="add-btn b-btn-m">添加</button>
+          <% } %>
+            <% if (type == 'modify') { %>
+              <div class="item">
+                <button class="b-btn-s" class="modify-btn">修改</button>
+                <button class="b-btn-s" class="del-btn">删除</button>
+              </div>
+              <% } %>
       </div>
-      <div class="row">
-        <button class="fold b-btn-m">收起</button>
-      </div>
-    </div>
+    </form>
 
   </script>
 
@@ -257,7 +259,9 @@
 
     $('#addBtn').click(function() {
       var drawingForm = document.getElementById('drawingForm').innerHTML;
-      var temp = template(drawingForm, {});
+      var temp = template(drawingForm, {
+        type: 'add'
+      });
 
       $(this).parent().before(temp);
     });
@@ -266,12 +270,23 @@
       $(this).parent().parent().find('input')[0].click();
     });
 
-    $('body').on('click', '.fold', function() {
+    $('body').on('click', '.modify-btn', function() {
       $(this).parent().parent().hide();
     });
 
-    $('body').on('click', '.fold', function() {
+    $('body').on('click', '.del-btn', function() {
       $(this).parent().parent().hide();
+    });
+
+    $('body').on('click', '.add-btn', function() {
+      var formDataArr = $(this).parents('form').serializeArray();
+      var formData = {};
+      formDataArr.forEach(item => {
+        formData[item.name] = item.value;
+      });
+      var drawingBox = document.getElementById('drawingBox').innerHTML;
+      var temp = template(drawingBox);
+      $(this).parents('form').hide().before(temp);
     });
   </script>
 </body>
