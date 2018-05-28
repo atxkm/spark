@@ -134,7 +134,7 @@
     <div class="box">
       <div class="row">
         <div class="item">
-          <div class="name">添加附件</div><span class="desc" id="fileNum">当前附件1件</span>
+          <div class="name">添加附件</div><span class="desc" id="fileNum">当前附件0件</span>
         </div>
       </div>
     </div>
@@ -150,11 +150,14 @@
   <script id="drawingBox" type="text/html">
     <div class="box drawing">
       <div class="info">
-        <div class="pic"><img src="img/part.png"></div>
+        <div class="pic"><img src="<%= url %>"></div>
         <div class="content">
-          <div class="name"><span>钣金件两项</span></div>
-          <div class="no"><span>图号</span>ASA260M-05-01-1</div>
-          <div class="number"><span>数量</span>10件</div>
+          <div class="name"><span><%= name %></span></div>
+          <div class="no"><span>图号</span>
+            <%= no %>
+          </div>
+          <div class="number"><span>数量</span>
+            <%= num %>件</div>
         </div>
       </div>
       <button class="view">查看</button>
@@ -207,15 +210,14 @@
         </div>
       </div>
       <div class="row">
-        <% if (type == 'add') { %>
-          <button class="add-btn b-btn-m">添加</button>
-          <% } %>
-            <% if (type == 'modify') { %>
-              <div class="item">
-                <button class="b-btn-s" class="modify-btn">修改</button>
-                <button class="b-btn-s" class="del-btn">删除</button>
-              </div>
-              <% } %>
+        <div class="add-oper item">
+          <button class="add-btn b-btn-s">添加</button>
+          <button class="cancel-btn b-btn-s">取消</button>
+        </div>
+        <div class="item" style="display: none;">
+          <button class="modify-btn b-btn-s" class="">修改</button>
+          <button class="del-btn b-btn-s" class="">删除</button>
+        </div>
       </div>
     </form>
 
@@ -231,17 +233,17 @@
         resizePreview(_this);
         return;
       }
-      var row = $(this).parent().parent();
-      var label = row.find('label');
-      var span = row.find('span');
-      var img = row.find('img');
       var reads = new FileReader();
       reads.readAsDataURL(file);
+      var parent = $(_this).parents('.photo');
+      var label = parent.find('label');
+      var span = parent.find('span');
+      var img = parent.find('img');
       reads.onload = function(e) {
-        label.css('display', 'none');
-        span.css('display', 'none');
+        label.hide();
+        span.hide();
         img.attr('src', this.result);
-        img.parent.css('display', 'block');
+        img.parent().show();
       };
     }
 
@@ -255,38 +257,89 @@
       div.style.display = 'none';
     }
 
-    var filesData = [];
-
     $('#addBtn').click(function() {
       var drawingForm = document.getElementById('drawingForm').innerHTML;
-      var temp = template(drawingForm, {
-        type: 'add'
-      });
-
+      var temp = template(drawingForm);
       $(this).parent().before(temp);
     });
 
     $('body').on('click', '.photo img', function() {
-      $(this).parent().parent().find('input')[0].click();
+      $(this).parents('.photo').find('input')[0].click();
     });
 
-    $('body').on('click', '.modify-btn', function() {
-      $(this).parent().parent().hide();
-    });
-
-    $('body').on('click', '.del-btn', function() {
-      $(this).parent().parent().hide();
-    });
-
-    $('body').on('click', '.add-btn', function() {
-      var formDataArr = $(this).parents('form').serializeArray();
+    function getFormData(form) {
+      var formDataArr = form.serializeArray();
       var formData = {};
       formDataArr.forEach(item => {
         formData[item.name] = item.value;
       });
-      var drawingBox = document.getElementById('drawingBox').innerHTML;
-      var temp = template(drawingBox);
-      $(this).parents('form').hide().before(temp);
+      return formData;
+    }
+
+    $('body').on('click', '.add-btn', function() {
+      var form = $(this).parents('form');
+      var formData = getFormData(form);
+      for (var k in formData) {
+        if (!formData[k]) {
+          alert('请填写所有数据');
+          return;
+        }
+      }
+      var file = form.find('input[type="file"]')[0];
+      if (!file.value) {
+        alert('请选择图片');
+        return;
+      }
+      var reads = new FileReader();
+      reads.readAsDataURL(file.files[0]);
+      reads.onload = function(e) {
+        formData.url = this.result;
+        console.log('formData', formData);
+        var temp = template($('#drawingBox').html(), formData);
+        form.hide().before(temp);
+        $('#fileNum').text('当前附件' + $('.drawing-form').length + '件');
+      };
+    });
+
+    $('body').on('click', '.cancel-btn', function() {
+      var form = $(this).parents('form');
+      form.remove();
+    });
+
+    $('body').on('click', '.view', function() {
+      var parent = $(this).parent();
+      parent.next().show().find('.add-oper').hide().next().show();
+      parent.remove();
+    });
+
+    $('body').on('click', '.modify-btn', function() {
+      var form = $(this).parents('form');
+      var formData = getFormData(form);
+      for (var k in formData) {
+        if (!formData[k]) {
+          alert('请填写所有数据');
+          return;
+        }
+      }
+      var file = form.find('input[type="file"]')[0];
+      if (!file.value) {
+        alert('请选择图片');
+        return;
+      }
+      var reads = new FileReader();
+      reads.readAsDataURL(file.files[0]);
+      reads.onload = function(e) {
+        formData.url = this.result;
+        console.log('formData', formData);
+        var temp = template($('#drawingBox').html(), formData);
+        form.hide().before(temp);
+      };
+    });
+
+    $('body').on('click', '.del-btn', function() {
+      var form = $(this).parents('form');
+      form.remove();
+      $('#fileNum').text('当前附件' + $('.drawing-form').length + '件');
     });
   </script>
 </body>
