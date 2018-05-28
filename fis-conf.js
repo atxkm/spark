@@ -30,12 +30,12 @@ fis.match('*.{ts,js}', {
 });
 
 fis.media('prod')
-  .match('**.{js, ts}', {
-    optimizer: fis.plugin('uglify-js')
-  })
-  .match('**.{css, scss}', {
-    optimizer: fis.plugin('clean-css')
-  })
+  // .match('**.{js, ts}', {
+  //   optimizer: fis.plugin('uglify-js')
+  // })
+  // .match('**.{css, scss}', {
+  //   optimizer: fis.plugin('clean-css')
+  // })
   .match('*.png', {
     optimizer: fis.plugin('png-compressor'),
   })

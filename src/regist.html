@@ -24,7 +24,7 @@
 
     <div class="line-input">
       <input type="text" placeholder="请输入短信验证码">
-      <button class="code">获取验证码</button>
+      <button class="code" id="codeBtn">获取验证码</button>
     </div>
 
     <div class="line-input">
@@ -71,6 +71,27 @@
 
 
   <script src="js/script.js"></script>
+  <script src="js/jquery.min.js"></script>
+  <script>
+    var text, timer, secounds = 60;
+    $('#codeBtn').click(function() {
+      if (secounds < 60) {
+        return;
+      }
+      var _this = $(this);
+      _this.text('60s');
+      timer = setInterval(function() {
+        if (--secounds == 0) {
+          clearInterval(timer);
+          _this.text('重新获取');
+          secounds = 60;
+          return;
+        }
+        text = secounds + 's';
+        _this.text(text);
+      }, 1000);
+    });
+  </script>
 </body>
 
 </html>
