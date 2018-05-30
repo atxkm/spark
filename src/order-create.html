@@ -41,19 +41,23 @@
     <div class="row">
       <div class="item">
         <div class="name">选择材质</div>
-        <select class="spec">
+        <select class="spec" onchange="isShowCaizhiInp(this)">
+          <option value="1">材质1</option>
           <option value="其他">其他</option>
         </select>
       </div>
+      <div class="item">
+        <input type="text" style="display: none;" placeholder="请填写材质名称" id="caizhiInp">
+      </div>
+    </div>
+
+    <div class="row">
       <div class="item">
         <div class="name">预算</div>
         <select class="spec">
           <option value="包工包料">1000以内</option>
         </select>
       </div>
-    </div>
-
-    <div class="row">
       <div class="item">
         <div class="name">询价方式</div>
         <select class="spec">
@@ -341,6 +345,14 @@
       form.remove();
       $('#fileNum').text('当前附件' + $('.drawing-form').length + '件');
     });
+
+    function isShowCaizhiInp(_this) {
+      if (_this.value == '其他') {
+        $('#caizhiInp').show();
+      } else {
+        $('#caizhiInp').hide();
+      }
+    }
   </script>
 </body>
 
